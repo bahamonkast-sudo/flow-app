@@ -10,59 +10,78 @@
 
 html, body, #root { height: 100%; margin: 0; padding: 0; }
 body {
-  background: #0d1117;
-  color: #e6e8eb;
+  background: #f4f0e8;
+  color: #2d2a24;
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-::selection { background: rgba(16, 185, 129, 0.35); }
 
-/* Fondo con profundidad y calidez */
+/* Fondo papel con textura */
 #root::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 90%, rgba(245, 158, 11, 0.05) 0%, transparent 55%),
-    radial-gradient(ellipse 100% 80% at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 70%),
-    linear-gradient(180deg, #0f141a 0%, #0d1117 50%, #0a0e14 100%);
+    linear-gradient(180deg, #fdfbf6 0%, #f4f0e8 50%, #ebe7de 100%);
   pointer-events: none;
 }
 
-/* Patrón de puntos muy sutil */
+/* Textura de papel sutil */
 #root::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   background-image:
-    radial-gradient(rgba(99, 102, 241, 0.035) 0.5px, transparent 0.5px),
-    radial-gradient(rgba(245, 158, 11, 0.025) 0.5px, transparent 0.5px);
-  background-size: 40px 40px, 60px 60px;
-  background-position: 0 0, 20px 20px;
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.045;
   pointer-events: none;
-  opacity: 0.6;
 }
 
-/* Scrollbars elegantes */
+/* Sombra superior suave */
+html::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 50px;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+::selection { background: #c8e6c9; color: #1b5e20; }
+
+/* Scrollbars papel */
 *::-webkit-scrollbar { width: 7px; height: 7px; }
-*::-webkit-scrollbar-track { background: transparent; }
-*::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #334155, #1e293b); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
-*::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #475569, #334155); background-clip: padding-box; }
+*::-webkit-scrollbar-track { background: #ebe7de; border-radius: 6px; }
+*::-webkit-scrollbar-thumb { background: #c9c3b8; border-radius: 6px; border: 2px solid transparent; background-clip: padding-box; }
+*::-webkit-scrollbar-thumb:hover { background: #b8b3a8; }
 *::-webkit-scrollbar-corner { background: transparent; }
 
-::selection { background: rgba(16, 185, 129, 0.35); }
+::selection { background: #c8e6c9; color: #1b5e20; }
 
-/* Animaciones */
-@keyframes rise-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .rise { animation: rise-in 0.35s ease both; }
-
-@keyframes pulse-soft { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes pulse-soft { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
 .pulse-soft { animation: pulse-soft 2.5s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+.float { animation: float 3s ease-in-out infinite; }
+@keyframes dashflow { to { stroke-dashoffset: -16; } }
 
-@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-.shimmer { background-size: 200% 100%; animation: shimmer 2s linear infinite; }
+*:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 2px; }
+
+.card-paper {
+  transition: transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.2s;
+}
+.card-paper:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px -6px rgba(0,0,0,0.1),
+    0 2px 8px -2px rgba(0,0,0,0.06),
+    0 0 0 1px rgba(0,0,0,0.04);
+}

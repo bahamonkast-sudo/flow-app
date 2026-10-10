@@ -7,24 +7,24 @@ const THEME_OF = { social: 'emerald', wa: 'emerald', telegram: 'sky', signals: '
 
 const colorThemes = {
   emerald: {
-    border: 'border-emerald-500/30 hover:border-emerald-400/60',
-    glow: 'shadow-[0_0_20px_-3px_rgba(16,185,129,0.15)]',
-    handle: 'bg-emerald-400!',
+    border: 'border-emerald-300/50 hover:border-emerald-400/70',
+    glow: 'shadow-[0_0_20px_-3px_rgba(16,185,129,0.1)]',
+    handle: 'bg-emerald-500!',
   },
   sky: {
-    border: 'border-sky-500/30 hover:border-sky-400/60',
-    glow: 'shadow-[0_0_20px_-3px_rgba(14,165,233,0.15)]',
-    handle: 'bg-sky-400!',
+    border: 'border-sky-300/50 hover:border-sky-400/70',
+    glow: 'shadow-[0_0_20px_-3px_rgba(14,165,233,0.1)]',
+    handle: 'bg-sky-500!',
   },
   amber: {
-    border: 'border-amber-500/40 hover:border-amber-400/70',
-    glow: 'shadow-[0_0_25px_-3px_rgba(245,158,11,0.2)]',
-    handle: 'bg-amber-400!',
+    border: 'border-amber-300/60 hover:border-amber-400/80',
+    glow: 'shadow-[0_0_25px_-3px_rgba(245,158,11,0.15)]',
+    handle: 'bg-amber-500!',
   },
   purple: {
-    border: 'border-purple-500/30 hover:border-purple-400/60',
-    glow: 'shadow-[0_0_20px_-3px_rgba(168,85,247,0.15)]',
-    handle: 'bg-purple-400!',
+    border: 'border-purple-300/50 hover:border-purple-400/70',
+    glow: 'shadow-[0_0_20px_-3px_rgba(168,85,247,0.1)]',
+    handle: 'bg-purple-500!',
   },
 };
 
@@ -91,7 +91,7 @@ export default function ContainerNode({ id, data }) {
       onClick={() => inspect({ type: 'phase', phaseId })}
       onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); }}
       onDrop={onDrop}
-      className={`relative w-[260px] rounded-2xl bg-slate-900/80 backdrop-blur-xl border ${theme.border} ${theme.glow} p-3 transition-all duration-300 ${
+      className={`relative w-[260px] rounded-2xl bg-white/90 backdrop-blur-sm border ${theme.border} ${theme.glow} p-3 transition-all duration-300 card-paper ${
         !isActive ? 'opacity-40 grayscale' : ''
       }`}
     >
@@ -104,7 +104,7 @@ export default function ContainerNode({ id, data }) {
 
       <div className="flex items-start justify-between gap-2 pb-2 border-b border-slate-800/80">
         <div className="min-w-0">
-          <span className="text-[10px] font-mono tracking-wider uppercase text-slate-400">
+          <span className="text-[10px] font-mono tracking-wider uppercase text-neutral-500">
             {meta.subtitle}
           </span>
           <h3 className="text-sm font-bold text-white truncate">{meta.title}</h3>

@@ -1,36 +1,48 @@
-.node-off { opacity: 0.38; filter: grayscale(0.95); }
-.node-off .react-flow__handle { background: #475569 !important; border-color: #0f141a !important; }
+/* Scrollbar papel */
+*::-webkit-scrollbar { width: 7px; height: 7px; }
+*::-webkit-scrollbar-track { background: #ebe7de; border-radius: 6px; }
+*::-webkit-scrollbar-thumb { background: #c9c3b8; border-radius: 6px; border: 2px solid transparent; background-clip: padding-box; }
+*::-webkit-scrollbar-thumb:hover { background: #b8b3a8; }
 
-.node-card { transition: box-shadow 0.28s ease, border-color 0.28s ease, transform 0.22s ease; }
-.node-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(99,102,241,0.15); }
-
-.funnel-slider { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 9999px; background: linear-gradient(90deg, #10b98144, #1e293b); outline: none; cursor: pointer; }
-.funnel-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; border-radius: 9999px; background: #10b981; border: 2px solid #064e3b; box-shadow: 0 0 12px #10b981, 0 2px 4px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-.funnel-slider::-webkit-slider-thumb:hover { transform: scale(1.2); box-shadow: 0 0 18px #10b981, 0 4px 8px rgba(0,0,0,0.4); }
-.funnel-slider::-moz-range-thumb { width: 15px; height: 15px; border-radius: 9999px; background: #10b981; border: 2px solid #064e3b; box-shadow: 0 0 12px #10b981; cursor: pointer; }
+.funnel-slider { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 9999px; background: linear-gradient(90deg, #a3e6a3, #e8e8d8); outline: none; cursor: pointer; }
+.funnel-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; border-radius: 9999px; background: #2e7d32; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.15), 0 0 0 2px #fff; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.funnel-slider::-webkit-slider-thumb:hover { transform: scale(1.15); box-shadow: 0 4px 12px rgba(46,125,50,0.3), 0 0 0 2px #fff; }
+.funnel-slider::-moz-range-thumb { width: 15px; height: 15px; border-radius: 9999px; background: #2e7d32; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.15); cursor: pointer; }
 .funnel-slider:disabled { opacity: 0.35; cursor: not-allowed; }
-.funnel-slider:disabled::-webkit-slider-thumb { background: #475569; box-shadow: none; }
+.funnel-slider:disabled::-webkit-slider-thumb { background: #bdbdbd; box-shadow: none; }
 
 .react-flow__attribution { display: none; }
-.react-flow__controls { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px -8px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.1); }
-.react-flow__controls-button { background: rgba(13, 17, 23, 0.95) !important; border-bottom: 1px solid #1e293b !important; backdrop-filter: blur(8px); }
-.react-flow__controls-button:hover { background: rgba(30, 41, 59, 0.95) !important; }
-.react-flow__controls-button svg { fill: #10b981 !important; }
-.react-flow__minimap { border-radius: 14px; overflow: hidden; background: #0d1117 !important; }
-.react-flow__handle { width: 10px; height: 10px; }
+.react-flow__controls { border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px -4px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06); }
+.react-flow__controls-button { background: #fdfbf6 !important; border-bottom: 1px solid #e8e4da !important; backdrop-filter: blur(8px); }
+.react-flow__controls-button:hover { background: #f4f0e8 !important; }
+.react-flow__controls-button svg { fill: #2e7d32 !important; }
+.react-flow__minimap { border-radius: 14px; overflow: hidden; background: #fdfbf6 !important; }
+.react-flow__handle { width: 10px; height: 10px; border-radius: 9999px; }
 .react-flow__edge.animated .react-flow__edge-path { stroke-dasharray: 10 6; animation: dashflow 0.7s linear infinite; }
 @keyframes dashflow { to { stroke-dashoffset: -16; } }
 
-/* Brillo sutil en tarjetas al hover */
-.node-card:hover::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(99,102,241,0.08), transparent 40%, rgba(245,158,11,0.06) 60%, transparent);
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+/* Animaciones */
+@keyframes rise-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise-in 0.35s ease both; }
+@keyframes pulse-soft { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+.pulse-soft { animation: pulse-soft 2.5s ease-in-out infinite; }
+@keyframes dashflow { to { stroke-dashoffset: -16; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+.float { animation: float 3s ease-in-out infinite; }
+
+/* Focus visible */
+*:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 2px; }
+
+/* Tarjeta con relieve de papel */
+.card-paper {
+  transition: transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.2s;
 }
-.node-card:hover::before { opacity: 1; }
+.card-paper:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px -6px rgba(0,0,0,0.1),
+    0 2px 8px -2px rgba(0,0,0,0.06),
+    0 0 0 1px rgba(0,0,0,0.04);
+}
