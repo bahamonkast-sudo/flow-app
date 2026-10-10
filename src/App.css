@@ -1,0 +1,18 @@
+.node-off { opacity: 0.45; filter: grayscale(1); }
+.node-off .react-flow__handle { background: #475569 !important; border-color: #1e293b !important; }
+
+.funnel-slider { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 9999px; background: #1e293b; outline: none; cursor: pointer; }
+.funnel-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; border-radius: 9999px; background: #10b981; border: 2px solid #064e3b; box-shadow: 0 0 8px #10b981; cursor: pointer; }
+.funnel-slider::-moz-range-thumb { width: 14px; height: 14px; border-radius: 9999px; background: #10b981; border: 2px solid #064e3b; box-shadow: 0 0 8px #10b981; cursor: pointer; }
+.funnel-slider:disabled { opacity: 0.4; cursor: not-allowed; }
+.funnel-slider:disabled::-webkit-slider-thumb { background: #475569; box-shadow: none; }
+
+.react-flow__attribution { display: none; }
+.react-flow__controls { border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); }
+.react-flow__controls-button { background: #0f172a !important; border-bottom: 1px solid #1e293b !important; }
+.react-flow__controls-button:hover { background: #1e293b !important; }
+.react-flow__controls-button svg { fill: #10b981 !important; }
+.react-flow__minimap { border-radius: 10px; overflow: hidden; background: #0f172a !important; }
+.react-flow__handle { width: 10px; height: 10px; }
+.react-flow__edge.animated .react-flow__edge-path { stroke-dasharray: 8 5; animation: dashflow 0.6s linear infinite; }
+@keyframes dashflow { to { stroke-dashoffset: -13; } }
