@@ -7,24 +7,32 @@ const THEME_OF = { social: 'emerald', wa: 'emerald', telegram: 'sky', signals: '
 
 const colorThemes = {
   emerald: {
-    border: 'border-emerald-300/50 hover:border-emerald-400/70',
-    glow: 'shadow-[0_0_20px_-3px_rgba(16,185,129,0.1)]',
+    border: 'border-emerald-300/60 hover:border-emerald-400/80',
+    accent: 'text-emerald-600',
+    pill: 'bg-emerald-100/80 text-emerald-700 border-emerald-200/60',
     handle: 'bg-emerald-500!',
+    dot: 'bg-emerald-500',
   },
   sky: {
-    border: 'border-sky-300/50 hover:border-sky-400/70',
-    glow: 'shadow-[0_0_20px_-3px_rgba(14,165,233,0.1)]',
+    border: 'border-sky-300/60 hover:border-sky-400/80',
+    accent: 'text-sky-600',
+    pill: 'bg-sky-100/80 text-sky-700 border-sky-200/60',
     handle: 'bg-sky-500!',
+    dot: 'bg-sky-500',
   },
   amber: {
-    border: 'border-amber-300/60 hover:border-amber-400/80',
-    glow: 'shadow-[0_0_25px_-3px_rgba(245,158,11,0.15)]',
+    border: 'border-amber-300/70 hover:border-amber-400/90',
+    accent: 'text-amber-700',
+    pill: 'bg-amber-100/80 text-amber-800 border-amber-200/70',
     handle: 'bg-amber-500!',
+    dot: 'bg-amber-500',
   },
   purple: {
-    border: 'border-purple-300/50 hover:border-purple-400/70',
-    glow: 'shadow-[0_0_20px_-3px_rgba(168,85,247,0.1)]',
+    border: 'border-purple-300/60 hover:border-purple-400/80',
+    accent: 'text-purple-600',
+    pill: 'bg-purple-100/80 text-purple-700 border-purple-200/60',
     handle: 'bg-purple-500!',
+    dot: 'bg-purple-500',
   },
 };
 
@@ -45,10 +53,10 @@ const SHORT = {
 };
 
 const dotColor = (id) => {
-  if (id.startsWith('tg_')) return '#0088cc';
-  if (id.startsWith('wa_')) return '#25d366';
+  if (id.startsWith('tg_')) return '#0284c7';
+  if (id.startsWith('wa_')) return '#16a34a';
   if (id.startsWith('sig_')) return '#f59e0b';
-  if (id.startsWith('m_')) return '#a78bfa';
+  if (id.startsWith('m_')) return '#a855f7';
   return '#38bdf8';
 };
 
@@ -91,29 +99,29 @@ export default function ContainerNode({ id, data }) {
       onClick={() => inspect({ type: 'phase', phaseId })}
       onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); }}
       onDrop={onDrop}
-      className={`relative w-[260px] rounded-2xl bg-white/90 backdrop-blur-sm border ${theme.border} ${theme.glow} p-3 transition-all duration-300 card-paper ${
-        !isActive ? 'opacity-40 grayscale' : ''
+      className={`relative w-[260px] rounded-2xl bg-ebe8da/95 backdrop-blur-sm border border-neutral-300/60 p-3 transition-all duration-300 neumorphic ${
+        !isActive ? 'opacity-45 grayscale' : ''
       }`}
     >
       {handles.target && (
-        <Handle type="target" position={Position.Left} id="in" className={`w-3! h-3! border-2! border-slate-950! ${theme.handle}`} />
+        <Handle type="target" position={Position.Left} id="in" className="neo-handle" />
       )}
       {handles.source && (
-        <Handle type="source" position={Position.Right} id="out" className={`w-3! h-3! border-2! border-slate-950! ${theme.handle}`} />
+        <Handle type="source" position={Position.Right} id="out" className="neo-handle" />
       )}
 
-      <div className="flex items-start justify-between gap-2 pb-2 border-b border-slate-800/80">
+      <div className="flex items-start justify-between gap-2 pb-2 border-b border-neutral-300/50">
         <div className="min-w-0">
           <span className="text-[10px] font-mono tracking-wider uppercase text-neutral-500">
             {meta.subtitle}
           </span>
-          <h3 className="text-sm font-bold text-white truncate">{meta.title}</h3>
+          <h3 className="text-sm font-bold text-neutral-900 truncate">{meta.title}</h3>
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
           <Toggle on={isActive} onChange={() => togglePhase(phaseId)} />
           <button
             onClick={removePhase}
-            className="nodrag text-slate-500 hover:text-rose-400 p-1 rounded-md transition-colors"
+            className="nodrag text-neutral-400 hover:text-rose-500 p-1.5 rounded-md transition-colors"
             title="Eliminar fase del flujo"
           >
             <X size={13} />
@@ -123,7 +131,7 @@ export default function ContainerNode({ id, data }) {
 
       <div className="my-2 space-y-1.5 max-h-[176px] overflow-y-auto pr-0.5">
         {phase.items.length === 0 && (
-          <div className="rounded-lg border border-dashed border-slate-800 px-2 py-3 text-center text-[11px] text-slate-500">
+          <div className="rounded-lg border border-dashed border-neutral-300/60 px-2 py-3 text-center text-[11px] text-neutral-500">
             Caja vacía
           </div>
         )}
@@ -133,19 +141,19 @@ export default function ContainerNode({ id, data }) {
             <div
               key={item.id}
               onClick={(e) => { e.stopPropagation(); inspect({ type: 'item', phaseId, itemId: item.id }); }}
-              className="group flex items-center justify-between h-8 px-2 rounded-lg bg-slate-950/40 border border-slate-800/80 hover:border-slate-700 cursor-pointer transition-colors"
+              className="group flex items-center justify-between h-8 px-2 rounded-lg bg-neutral-200/60 border border-neutral-300/50 hover:border-neutral-400/70 cursor-pointer transition-colors"
               title={item.name}
             >
               <div className="flex items-center gap-2 min-w-0">
                 <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: dot, boxShadow: `0 0 6px ${dot}` }} />
-                <span className="truncate text-[11px] font-medium text-slate-200">{SHORT[item.id] || item.name}</span>
+                <span className="truncate text-[11px] font-medium text-neutral-800">{SHORT[item.id] || item.name}</span>
               </div>
               <div className="flex items-center gap-1 shrink-0">
-                <span className={`text-[10px] font-mono ${item.conversion > 0 ? 'text-emerald-400' : 'text-slate-500'}`}>
+                <span className={`text-[10px] font-mono ${item.conversion > 0 ? 'text-emerald-600' : 'text-neutral-500'}`}>
                   {item.conversion > 0 ? `+${parseFloat((item.conversion * 100).toFixed(1))}%` : 'Activo'}
                 </span>
                 <button
-                  className="nodrag rounded p-0.5 text-slate-600 opacity-0 transition group-hover:opacity-100 hover:text-red-400"
+                  className="nodrag rounded p-0.5 text-neutral-400 opacity-0 transition group-hover:opacity-100 hover:text-red-500"
                   onClick={(e) => { e.stopPropagation(); removeTool(phaseId, item.id); }}
                   title="Quitar ingrediente"
                 >
@@ -159,7 +167,7 @@ export default function ContainerNode({ id, data }) {
 
       <button
         onClick={(e) => { e.stopPropagation(); inspect({ type: 'phase', phaseId }); openCatalog(true); }}
-        className="nodrag w-full py-1.5 mt-2 rounded-lg border border-dashed border-slate-800 hover:border-slate-700 text-[11px] text-slate-400 hover:text-slate-200 transition-colors"
+        className="btn-neumorphic w-full py-1.5 mt-2 rounded-xl text-[11px] font-medium text-neutral-500 hover:text-neutral-800"
       >
         + Añadir módulo
       </button>

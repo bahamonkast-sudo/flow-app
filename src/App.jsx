@@ -127,11 +127,11 @@ function FunnelCanvas() {
 
   const removedPhases = Object.keys(PHASE_META).filter((id) => !phases[id]?.enabled);
 
-  return (
-<div className="h-screen w-screen bg-neutral-50 text-neutral-900">
-      <header className="absolute left-4 top-4 z-10 flex flex-col gap-2 rounded-2xl border border-neutral-300 bg-gradient-to-br from-white to-neutral-100/90 px-5 py-3.5 backdrop-blur-sm shadow-[0_6px_24px_-6px_rgba(0,0,0,0.08),0_0_0_1px_rgba(0,0,0,0.04)] float">
+return (
+    <div className="h-screen w-screen bg-ebe8da text-neutral-900">
+      <header className="absolute left-4 top-4 z-10 flex flex-col gap-2 rounded-2xl neumorphic p-4 float">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-neutral-300 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.06)]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl neumorphic-flat flex items-center justify-center">
             <CandlestickChart size={20} className="text-emerald-600" />
           </div>
           <div>
@@ -140,17 +140,17 @@ function FunnelCanvas() {
           </div>
           <button
             onClick={() => setCatalogOpen(!catalogOpen)}
-            className={`ml-2 flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[11px] font-semibold transition-all ${
+            className={`ml-2 btn-neumorphic px-3 py-2 text-[11px] font-semibold transition-all ${
               catalogOpen
-                ? 'bg-emerald-600 border-emerald-600/30 text-white shadow-[0_4px_16px_-4px_rgba(16,185,129,0.35)]'
-                : 'border-neutral-300 bg-white text-neutral-700 hover:border-neutral-400 hover:bg-neutral-50'
+                ? 'btn-primary'
+                : 'text-neutral-700'
             }`}
           >
             <Wrench size={13} /> Catálogo
           </button>
           <button
             onClick={rebuildIdeal}
-            className="ml-1 flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-[12px] font-extrabold text-white shadow-[0_4px_16px_-4px_rgba(16,185,129,0.35)] transition-all hover:bg-emerald-500 hover:shadow-[0_8px_24px_-4px_rgba(16,185,129,0.4)] active:scale-[0.98]"
+            className="ml-1 btn-primary px-4 py-2 text-[12px] font-extrabold"
           >
             <span className="pulse-soft">⚡</span> Reconstruir Flujo Ideal
           </button>
@@ -162,7 +162,7 @@ function FunnelCanvas() {
               <button
                 key={id}
                 onClick={() => readdPhase(id)}
-                className="flex items-center gap-1 rounded-full border border-dashed border-neutral-300 bg-white px-2.5 py-1.5 text-[10px] font-medium text-neutral-600 hover:border-emerald-500/80 hover:text-emerald-700 hover:bg-emerald-50 transition-all"
+                className="btn-neumorphic flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[10px] font-medium text-neutral-600 hover:text-emerald-700"
               >
                 <Plus size={11} /> {PHASE_META[id].title}
               </button>
@@ -186,14 +186,14 @@ function FunnelCanvas() {
         minZoom={0.3}
         maxZoom={1.75}
       >
-        <Background variant={BackgroundVariant.Dots} gap={22} size={1.5} color="#d4d0c8" />
+        <Background variant={BackgroundVariant.Dots} gap={24} size={1.8} color="#c4c0b8" />
         <Controls showInteractive={false} />
         <MiniMap
           pannable
           zoomable
-          nodeColor="#c9c3b8"
-          maskColor="rgba(244,240,232,0.8)"
-          className="bg-white/80! border! border-neutral-300! rounded-xl! overflow-hidden"
+          nodeColor="#b8b4a8"
+          maskColor="rgba(235,232,218,0.85)"
+          className="neumorphic"
         />
       </ReactFlow>
     </div>
