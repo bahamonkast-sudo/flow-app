@@ -1,4 +1,18 @@
 @import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/800.css";
 
 html, body, #root { height: 100%; margin: 0; padding: 0; }
-body { background: #0f0f1a; color: #eee; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
+body {
+  background: #0a0f1d; color: #e2e8f0;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  overflow: hidden; -webkit-font-smoothing: antialiased;
+}
+::selection { background: rgba(16, 185, 129, 0.35); }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: #334155; }

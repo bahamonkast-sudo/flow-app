@@ -45,34 +45,37 @@ export default function Inspector() {
   }
 
   return (
-    <div className="absolute bottom-4 right-4 top-4 z-10 flex w-80 flex-col rounded-xl border border-slate-700 bg-slate-900/95 shadow-2xl backdrop-blur">
+    <div className="rise absolute bottom-4 right-4 top-4 z-10 flex w-80 flex-col rounded-2xl border border-slate-700/60 bg-slate-900/95 shadow-2xl backdrop-blur">
       <div className="flex items-center justify-between border-b border-slate-800 px-4 py-3">
         <div>
-          <h3 className="text-[13px] font-bold uppercase tracking-wide text-emerald-300">Ficha técnica</h3>
-          <div className="text-[10px] text-slate-400">{meta.title}</div>
+          <h3 className="text-[13px] font-extrabold uppercase tracking-widest text-emerald-300">Ficha técnica</h3>
+          <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{meta.title}</div>
         </div>
-        <button onClick={() => clear(null)} className="rounded p-1 text-slate-500 hover:bg-slate-800 hover:text-slate-200">
+        <button onClick={() => clear(null)} className="rounded-lg p-1.5 text-slate-500 transition hover:bg-slate-800 hover:text-slate-200">
           <X size={16} />
         </button>
       </div>
-      <div className="flex-1 space-y-3 overflow-y-auto p-4">
+      <div className="flex-1 space-y-2.5 overflow-y-auto p-4">
         <div>
-          <div className="text-[14px] font-semibold text-slate-100">{title}</div>
-          <div className="text-[11px]" style={{ color: meta.color }}>{subtitle}</div>
+          <div className="text-[14px] font-bold tracking-tight text-white">{title}</div>
+          <div className="text-[11px] font-semibold" style={{ color: meta.color }}>{subtitle}</div>
         </div>
         {rows.map(({ Icon, label, value }, i) => (
-          <div key={i} className="rounded-lg bg-slate-800/70 p-2.5">
-            <div className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold text-slate-300">
-              <Icon size={13} className="text-emerald-400" /> {label}
+          <div key={i} className="rounded-xl border border-slate-800/60 bg-slate-800/50 p-3">
+            <div className="mb-1 flex items-center gap-1.5 text-[11px] font-bold text-slate-200">
+              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-emerald-500/15 text-emerald-400">
+                <Icon size={12} />
+              </span>
+              {label}
             </div>
             <div className="text-[12px] leading-relaxed text-slate-400">{value}</div>
           </div>
         ))}
         {isItem && item.conversion > 0 && (
-          <div className="rounded-lg bg-slate-800/70 p-2.5">
-            <div className="mb-1 flex justify-between text-[11px] text-slate-300">
-              <span className="font-semibold">Alcance</span>
-              <span className="font-bold text-emerald-300">{fmt(item.reach)} de alcance</span>
+          <div className="rounded-xl border border-slate-800/60 bg-slate-800/50 p-3">
+            <div className="mb-1.5 flex justify-between text-[11px]">
+              <span className="font-bold text-slate-200">Alcance</span>
+              <span className="font-extrabold text-emerald-300">{fmt(item.reach)}</span>
             </div>
             <Slider value={item.reach} min={500} max={50000} step={500} onChange={(v) => setReach(phaseId, item.id, v)} />
           </div>

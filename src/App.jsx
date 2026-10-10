@@ -133,7 +133,7 @@ function FunnelCanvas() {
         <div className="flex items-center gap-2">
           <CandlestickChart size={20} className="text-emerald-400" />
           <div>
-            <h1 className="text-sm font-bold">Configurador de Embudo · Opciones Binarias</h1>
+            <h1 className="text-sm font-extrabold tracking-tight text-white">Configurador de Embudo <span className="text-emerald-400">· Opciones Binarias</span></h1>
             <p className="text-[10px] text-slate-400">Captación → Filtro → Señales → Academia · Click: ficha técnica</p>
           </div>
           <button
@@ -146,7 +146,7 @@ function FunnelCanvas() {
           </button>
           <button
             onClick={rebuildIdeal}
-            className="ml-1 flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-[12px] font-bold text-slate-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400"
+            className="ml-1 flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-[12px] font-bold text-slate-950 shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-400 hover:shadow-emerald-500/40 active:scale-95"
           >
             ⚡ Reconstruir Flujo Ideal
           </button>
