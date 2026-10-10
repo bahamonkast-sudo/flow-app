@@ -187,11 +187,9 @@ function FunnelCanvas() {
         <MiniMap
           pannable
           zoomable
-          nodeColor={(n) => {
-            const pid = phaseOf(n.id);
-            return pid && !phases[pid]?.enabled ? '#334155' : '#10b981';
-          }}
+          nodeColor="#1e293b"
           maskColor="rgba(10,15,29,0.8)"
+          className="bg-slate-900/80! border! border-slate-800! rounded-xl! overflow-hidden"
         />
       </ReactFlow>
     </div>
