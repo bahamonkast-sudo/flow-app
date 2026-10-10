@@ -1,25 +1,36 @@
-.node-off { opacity: 0.45; filter: grayscale(1); }
-.node-off .react-flow__handle { background: #475569 !important; border-color: #1e293b !important; }
+.node-off { opacity: 0.38; filter: grayscale(0.95); }
+.node-off .react-flow__handle { background: #475569 !important; border-color: #0f141a !important; }
 
-.node-card { transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease; }
-.node-card:hover { transform: translateY(-2px); }
+.node-card { transition: box-shadow 0.28s ease, border-color 0.28s ease, transform 0.22s ease; }
+.node-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(99,102,241,0.15); }
 
-@keyframes rise-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-.rise { animation: rise-in 0.3s ease both; }
-
-.funnel-slider { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 9999px; background: linear-gradient(90deg, #10b98155, #1e293b); outline: none; cursor: pointer; }
-.funnel-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; border-radius: 9999px; background: #10b981; border: 2px solid #064e3b; box-shadow: 0 0 10px #10b981; cursor: pointer; transition: transform 0.15s ease; }
-.funnel-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
-.funnel-slider::-moz-range-thumb { width: 15px; height: 15px; border-radius: 9999px; background: #10b981; border: 2px solid #064e3b; box-shadow: 0 0 10px #10b981; cursor: pointer; }
-.funnel-slider:disabled { opacity: 0.4; cursor: not-allowed; }
+.funnel-slider { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 9999px; background: linear-gradient(90deg, #10b98144, #1e293b); outline: none; cursor: pointer; }
+.funnel-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; border-radius: 9999px; background: #10b981; border: 2px solid #064e3b; box-shadow: 0 0 12px #10b981, 0 2px 4px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.funnel-slider::-webkit-slider-thumb:hover { transform: scale(1.2); box-shadow: 0 0 18px #10b981, 0 4px 8px rgba(0,0,0,0.4); }
+.funnel-slider::-moz-range-thumb { width: 15px; height: 15px; border-radius: 9999px; background: #10b981; border: 2px solid #064e3b; box-shadow: 0 0 12px #10b981; cursor: pointer; }
+.funnel-slider:disabled { opacity: 0.35; cursor: not-allowed; }
 .funnel-slider:disabled::-webkit-slider-thumb { background: #475569; box-shadow: none; }
 
 .react-flow__attribution { display: none; }
-.react-flow__controls { border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); }
-.react-flow__controls-button { background: #0f172a !important; border-bottom: 1px solid #1e293b !important; }
-.react-flow__controls-button:hover { background: #1e293b !important; }
+.react-flow__controls { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px -8px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.1); }
+.react-flow__controls-button { background: rgba(13, 17, 23, 0.95) !important; border-bottom: 1px solid #1e293b !important; backdrop-filter: blur(8px); }
+.react-flow__controls-button:hover { background: rgba(30, 41, 59, 0.95) !important; }
 .react-flow__controls-button svg { fill: #10b981 !important; }
-.react-flow__minimap { border-radius: 10px; overflow: hidden; background: #0f172a !important; }
+.react-flow__minimap { border-radius: 14px; overflow: hidden; background: #0d1117 !important; }
 .react-flow__handle { width: 10px; height: 10px; }
-.react-flow__edge.animated .react-flow__edge-path { stroke-dasharray: 8 5; animation: dashflow 0.6s linear infinite; }
-@keyframes dashflow { to { stroke-dashoffset: -13; } }
+.react-flow__edge.animated .react-flow__edge-path { stroke-dasharray: 10 6; animation: dashflow 0.7s linear infinite; }
+@keyframes dashflow { to { stroke-dashoffset: -16; } }
+
+/* Brillo sutil en tarjetas al hover */
+.node-card:hover::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), transparent 40%, rgba(245,158,11,0.06) 60%, transparent);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.node-card:hover::before { opacity: 1; }

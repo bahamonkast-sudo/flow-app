@@ -4,15 +4,65 @@
 @import "@fontsource/inter/600.css";
 @import "@fontsource/inter/700.css";
 @import "@fontsource/inter/800.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
 
 html, body, #root { height: 100%; margin: 0; padding: 0; }
 body {
-  background: #0a0f1d; color: #e2e8f0;
+  background: #0d1117;
+  color: #e6e8eb;
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  overflow: hidden; -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 ::selection { background: rgba(16, 185, 129, 0.35); }
-*::-webkit-scrollbar { width: 8px; height: 8px; }
+
+/* Fondo con profundidad y calidez */
+#root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 90%, rgba(245, 158, 11, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 80% at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 70%),
+    linear-gradient(180deg, #0f141a 0%, #0d1117 50%, #0a0e14 100%);
+  pointer-events: none;
+}
+
+/* Patrón de puntos muy sutil */
+#root::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(rgba(99, 102, 241, 0.035) 0.5px, transparent 0.5px),
+    radial-gradient(rgba(245, 158, 11, 0.025) 0.5px, transparent 0.5px);
+  background-size: 40px 40px, 60px 60px;
+  background-position: 0 0, 20px 20px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Scrollbars elegantes */
+*::-webkit-scrollbar { width: 7px; height: 7px; }
 *::-webkit-scrollbar-track { background: transparent; }
-*::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 8px; }
-*::-webkit-scrollbar-thumb:hover { background: #334155; }
+*::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #334155, #1e293b); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+*::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #475569, #334155); background-clip: padding-box; }
+*::-webkit-scrollbar-corner { background: transparent; }
+
+::selection { background: rgba(16, 185, 129, 0.35); }
+
+/* Animaciones */
+@keyframes rise-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise-in 0.35s ease both; }
+
+@keyframes pulse-soft { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+.pulse-soft { animation: pulse-soft 2.5s ease-in-out infinite; }
+
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.shimmer { background-size: 200% 100%; animation: shimmer 2s linear infinite; }
